@@ -3,12 +3,14 @@ import { useState } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
 import { useAuth } from "../context/AuthProvider";
+import AddBookModal from "./AddBookModal";
 
 function Navbar() {
   const [authUser, setAuthUser] = useAuth();
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
+  const [theme, setTheme] = useState();
+  const [showModal, setShowModal] = useState(false);
+  
+  localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   const element = document.documentElement;
   useEffect(() => {
     if (theme === "dark") {
@@ -45,10 +47,10 @@ function Navbar() {
         <a href="/course">Course</a>
       </li>
       <li>
-        <a>Contact</a>
+        <a href="/Contact">Contact</a>
       </li>
       <li>
-        <a>About</a>
+        <a href="/About">About</a>
       </li>
     </>
   );
@@ -163,7 +165,18 @@ function Navbar() {
               </div>
             )}
           </div>
+          <div className=" mx-auto flex justify-between items-center">
+        <button
+          onClick={() => setShowModal(true)}
+          className="btn ml-5 hover:bg-slate-400 duration-300 cursor-pointer"
+        >
+          Add
+        </button>
+      </div>
+      {showModal && <AddBookModal onClose={() => setShowModal(false)} />}
+
         </div>
+        
       </div>
     </>
   );
