@@ -62,7 +62,7 @@ Please ensure your code follows our Code of Conduct and Contributing Guidelines.
 
 ## License
 
-ReadRipple is licensed under the [MIT](https://opensource.org/license/mit) License. See the LICENSE file for more information.
+ReadRipple is licensed under the [MIT](https://opensource.org/license/mit) License. See the [LICENSE](https://opensource.org/license/mit) file for more information.
 
 ## Contact
 
