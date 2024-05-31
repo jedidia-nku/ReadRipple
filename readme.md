@@ -4,14 +4,14 @@ Welcome to ReadRipple, the ultimate bookstore app where you can explore, purchas
 
 ## Table of Contents
 
-* Features
-* Installation
-* Usage
-* Screenshots
-* Technologies Used
-* Contributing
-* License
-* Contact
+* [Features]
+* [Installation]
+* [Usage]
+* [Screenshots]
+* [Technologies] [Used]
+* [Contributing]
+* [License]
+* [Contact]
 
 ## Features
 
