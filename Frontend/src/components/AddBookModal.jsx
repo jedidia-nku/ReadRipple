@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const AddBookModal = ({ onClose }) => {
-    const [showModal, setShowModal] = useState(false)
+    // const [showModal, setShowModal] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     author: '',
@@ -40,10 +41,20 @@ const AddBookModal = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-md shadow-md w-full max-w-lg">
+    <div id="my_modal_4" className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+      <div className="bg-white p-8 rounded-md relative shadow-md w-full max-w-lg">
+      <Link
+              to="/"
+              className="btn btn-sm btn-circle absolute right-2 btn-ghost"
+              onClick={() => document.getElementById("my_modal_4").close()}
+            >
+              ✕
+            </Link>
+
         <h2 className="text-2xl mb-4">Add a New Book</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        
+        <form onSubmit={handleSubmit} className="space-y-4">     
+        
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input
