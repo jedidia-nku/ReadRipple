@@ -1,22 +1,29 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const multer = require('multer');
-const path = require('path');
-const Book = require('./models/Book');
+import dotenv from "dotenv";
+import bookRoute from "./route/book.route.js";
+import userRoute from "./route/user.route.js";
+
+import express from 'express';
+import multer from 'multer';
+import path from 'path';
+import Book from './model/Book.js';
+import mongoose, { model } from "mongoose";
+
+
+dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 const URI = process.env.MongoDBURI;
 
-// Connect to MongoDB
-mongoose.connect(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.error(err));
-
 // Middleware to parse JSON
 app.use(express.json());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Headers", "content-type");
+  next();
+})
 
 // Set up multer for file uploads
 const storage = multer.diskStorage({
@@ -26,15 +33,40 @@ const storage = multer.diskStorage({
   },
 });
 
+app.get('/', async (_, response) => {
+  response.json({ running: true })
+
+
+
+})
+
 const upload = multer({ storage });
 
+// defining routes
+app.use("/book", bookRoute);
+app.use("/user", userRoute);
+
+
+const saveBookAssets = upload.fields([
+  { name: "image", maxCount: 1 },
+  { name: "pdf", maxCount: 1 }
+]);
+
+
 // POST route to add a new book
-app.post('/api/books', upload.single('image'), async (req, res) => {
-  const { name, author, description, genre, publishedDate } = req.body;
-  const image = req.file.path;
+app.post('/api/books', saveBookAssets, async (req, res) => {
+ 
+  const image = (req.files.image ?? [])[0];
+  const pdf = (req.files.pdf ??  [])[0];
+ 
+  if(!pdf || !image){
+    return res.status(400).json({message: 'book asset is missing'});
+  }
 
   try {
-    const newBook = new Book({ name, author, description, genre, publishedDate, image });
+    const data = { ...req.body, image: image.path, pdf: pdf.path };
+
+    const newBook = new Book(data);
     const savedBook = await newBook.save();
     res.status(201).json(savedBook);
   } catch (err) {
@@ -43,6 +75,15 @@ app.post('/api/books', upload.single('image'), async (req, res) => {
 });
 
 // Serve uploaded images
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(path.dirname('.'), 'uploads')));
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, async () => {
+  try {
+    await mongoose.connect(URI)
+    console.log(`Server running on port ${PORT}`)
+  } catch (error) {
+    console.log("Failed to connect to MongoDB. Check if the server is up");
+  }
+
+});
+

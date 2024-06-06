@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -12,10 +12,11 @@ function Freebook() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+        const res = await axios.get("http://localhost:4001/book?limit=3");
 
-        const data = res.data.filter((data) => data.category === "Free");
+        const data = res.data; //res.data.filter((data) => data.category === "Free");
         console.log(data);
+        console.log(".......");
         setBook(data);
       } catch (error) {
         console.log(error);
@@ -70,7 +71,7 @@ function Freebook() {
           </p>
         </div>
 
-        <div>
+        <div> 
           <Slider {...settings}>
             {book.map((item) => (
               <Cards item={item} key={item.id} />

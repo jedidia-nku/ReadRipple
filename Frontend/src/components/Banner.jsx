@@ -1,7 +1,10 @@
-import React from "react";
+
 import banner from "../../public/banner.png";
 import Login from "./Login";
+import { useAuth } from "../context/AuthProvider";
 function Banner() {
+  const [authUser] = useAuth();
+
   return (
     <>
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row my-10">
@@ -29,6 +32,8 @@ function Banner() {
             </label>
           </div>
             <div className="">
+              {
+                !authUser && <>
                 <button
                   className="btn mt-6 btn-secondary hover:bg-slate-400 duration-300 cursor-pointer"
                   onClick={() =>
@@ -38,6 +43,9 @@ function Banner() {
                   Get Started
                 </button>
                 <Login />
+                </>
+              }
+                
                 </div>
         </div>
         <div className=" order-1 w-full mt-20 md:w-1/2">

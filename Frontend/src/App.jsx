@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./home/Home";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Courses from "./courses/Courses";
@@ -7,9 +6,10 @@ import Signup from "./components/Signup";
 import About from "./components/About";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "./context/AuthProvider";
+import PdfViewer from "./components/PdfViewer";
 
 function App() {
-  const [authUser, setAuthUser] = useAuth();
+  const [authUser] = useAuth();
   console.log(authUser);
   return (
     <>
@@ -23,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/pdfviewer" element={ authUser ? <PdfViewer /> : <Navigate to="/signup" />} />
         </Routes>
         <Toaster />
       </div>

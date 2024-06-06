@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -7,10 +8,8 @@ const AddBookModal = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     author: '',
-    description: '',
-    genre: '',
-    publishedDate: '',
     image: null,
+    pdf: null,
   });
 
   const handleChange = (e) => {
@@ -29,7 +28,7 @@ const AddBookModal = ({ onClose }) => {
     }
 
     try {
-      await axios.post('/api/books', data, {
+      await axios.post('http://localhost:4001/api/books', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -44,7 +43,7 @@ const AddBookModal = ({ onClose }) => {
     <div id="my_modal_4" className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-md relative shadow-md w-full max-w-lg">
       <Link
-              to="/"
+              to="/course"
               className="btn btn-sm btn-circle absolute right-2 btn-ghost"
               onClick={() => document.getElementById("my_modal_4").close()}
             >
@@ -55,6 +54,17 @@ const AddBookModal = ({ onClose }) => {
         
         <form onSubmit={handleSubmit} className="space-y-4">     
         
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Title</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input
@@ -78,42 +88,45 @@ const AddBookModal = ({ onClose }) => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
+            <label className="block text-sm font-medium text-gray-700">Price</label>
+            <input
+              type="Number"
+              name="price"
+              value={formData.price}
               onChange={handleChange}
               required
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            ></textarea>
+            />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Genre</label>
+            <label className="block text-sm font-medium text-gray-700">Category</label>
             <input
               type="text"
-              name="genre"
-              value={formData.genre}
+              name="category"
+              value={formData.category}
               onChange={handleChange}
               required
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Published Date</label>
-            <input
-              type="date"
-              name="publishedDate"
-              value={formData.publishedDate}
-              onChange={handleChange}
-              required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            />
-          </div>
+          
           <div>
             <label className="block text-sm font-medium text-gray-700">Image</label>
             <input
               type="file"
               name="image"
+              accept='image/*'
+              onChange={handleChange}
+              required
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+          <label className="block text-sm font-medium text-gray-700">Book File</label>
+            <input
+              type="file"
+              name="pdf"
+              accept='.pdf'
               onChange={handleChange}
               required
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"

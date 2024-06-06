@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './Navbar';
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -85,8 +86,14 @@ const Contact = () => {
             >
               Send Message
             </button>
+            
           </div>
         </form>
+        <Link to="/">
+            <button className="mt-6 bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-700 duration-300">
+              Back
+            </button>
+          </Link>
       </div>
     </div>
     </>

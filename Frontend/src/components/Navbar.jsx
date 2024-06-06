@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
 import { useAuth } from "../context/AuthProvider";
 import AddBookModal from "./AddBookModal";
+import { Link } from "react-router-dom";
 
 function Navbar() {
-  const [authUser, setAuthUser] = useAuth();
+  
   const [theme, setTheme] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [authUser] = useAuth();
   
   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   const element = document.documentElement;
@@ -41,10 +43,10 @@ function Navbar() {
   const navItems = (
     <>
       <li>
-        <a href="/">Home</a>
+        {!authUser && <a href="/">Home</a>}
       </li>
       <li>
-        <a href="/course">Course</a>
+      {authUser && <a href="/course">Books</a>}
       </li>
       <li>
         <a href="/Contact">Contact</a>
@@ -63,8 +65,8 @@ function Navbar() {
             : ""
         }`}
       >
-        <div className="navbar ">
-          <div className="navbar-start">
+        <div className="navbar justify-between">
+          <div className="navbar-start w-fit">
             <div className="dropdown">
               <div
                 tabIndex={0}
@@ -93,12 +95,19 @@ function Navbar() {
                 {navItems}
               </ul>
             </div>
-            <a className=" text-2xl font-bold cursor-pointer">ReadRipple</a>
+            <a className=" text-2xl font-bold cursor-pointer">
+              <Link
+              to={"/"}
+              >
+              ReadRipple
+              </Link>
+              </a>
           </div>
-          <div className="navbar-end space-x-3">
-            <div className="navbar-center hidden lg:flex">
+          <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">{navItems}</ul>
             </div>
+          <div className="navbar-center space-x-3">
+            
             <div className="hidden md:block">
               <label className=" px-3 py-2 border rounded-md flex items-center gap-2">
                 <input
@@ -120,6 +129,7 @@ function Navbar() {
                 </svg>
               </label>
             </div>
+            <div className="flex items-center gap-6">
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
               <input
@@ -152,7 +162,7 @@ function Navbar() {
             {authUser ? (
               <Logout />
             ) : (
-              <div className="">
+              <div >
                 <a
                   className="bg-black text-white px-3 py-2 rounded-md hover:bg-slate-800 duration-300 cursor-pointer"
                   onClick={() =>
@@ -165,6 +175,7 @@ function Navbar() {
               </div>
             )}
           </div>
+          {authUser && 
           <div className=" mx-auto flex justify-between items-center">
         <button
           onClick={() => setShowModal(true)}
@@ -172,8 +183,10 @@ function Navbar() {
         >
           Add
         </button>
-      </div>
+      </div>}
       {showModal && <AddBookModal onClose={() => setShowModal(false)} />}
+            </div>
+            
 
         </div>
         
