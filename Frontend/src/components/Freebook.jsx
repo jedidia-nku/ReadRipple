@@ -65,9 +65,12 @@ function Freebook() {
         <div>
           <h1 className="font-semibold text-xl pb-2">Free Beautiful Books to read</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Accusantium veritatis alias pariatur ad dolor repudiandae eligendi
-            corporis nulla non suscipit, iure neque earum?
+          Welcome, dear readers! Dive into a world of adventure, mystery, 
+          and imagination with our collection of free books. Each story is a doorway 
+          to a new and exciting journey, waiting just for you. So grab your favorite spot, 
+          get comfortable, and let the magic of reading transport you to places beyond your 
+          wildest dreams.
+          Happy reading!
           </p>
         </div>
 

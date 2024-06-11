@@ -58,7 +58,7 @@ const AddBookModal = ({ onClose }) => {
             <label className="block text-sm font-medium text-gray-700">Title</label>
             <input
               type="text"
-              name="title"
+              name="text"
               value={formData.title}
               onChange={handleChange}
               required

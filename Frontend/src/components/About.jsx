@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
@@ -10,7 +9,7 @@ const About = () => {
       <div className="bg-white shadow-md rounded-lg p-6 md:p-12 max-w-4xl">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">About ReadRipple</h1>
         <p className="text-gray-700 text-lg mb-4">
-          Welcome to ReadRipple, the ultimate bookstore app where you can explore, purchase, and review a wide variety of books. Whether you're a casual reader or a dedicated bookworm, ReadRipple provides a seamless and enriching experience for all your reading needs.
+          Welcome to ReadRipple, the ultimate bookstore app where you can explore, purchase, and review a wide variety of books. Whether you are a casual reader or a dedicated bookworm, ReadRipple provides a seamless and enriching experience for all your reading needs.
         </p>
         <p className="text-gray-700 text-lg mb-4">
           At ReadRipple, we believe in the power of reading to inspire, educate, and transform lives. Our mission is to make books easily accessible and to create a community of passionate readers who can share their insights and recommendations.
@@ -21,7 +20,7 @@ const About = () => {
         <ul className="list-disc list-inside text-gray-700 text-lg mb-4">
           <li>Browse books by categories, bestsellers, and new arrivals</li>
           <li>View detailed information about each book, including author, synopsis, ratings, and reviews</li>
-          <li>Read and write reviews for books you've read</li>
+          <li>Read and write reviews for books you have read</li>
           <li>Securely purchase books and track your orders</li>
           <li>Manage your personal library and keep track of your purchased books</li>
           <li>Receive personalized book recommendations based on your reading history and preferences</li>

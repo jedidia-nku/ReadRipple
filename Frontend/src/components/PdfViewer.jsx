@@ -17,8 +17,6 @@ const PdfViewer = () => {
     return (
         <div>
             <Navbar />
-
-
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                 <div className="mt-20 mx-auto"  >
                     <Viewer fileUrl={pdfUrl} />

@@ -18,25 +18,6 @@ Welcome to ReadRipple, the ultimate bookstore app where you can explore, purchas
 
 * **Search**: Quickly find books by title, author, or ISBN.
 
-## Prerequisites
-* Node.js
-* npm or yarn
-* MongoDB (for the backend database)
-
-## Usage
-
-* **Sign Up/Login**: Create a new account or log in with your existing credentials.
-
-* **Explore Books**: Use the navigation menu to browse through various categories and discover new books.
-
-* **View Book Details**: Click on any book to see more details, including reviews and ratings.
-
-* **Purchase Books**: Add books to your cart and proceed to checkout to purchase them.
-
-* **Write Reviews**: Share your thoughts on books you've read by writing reviews.
-
-* **Manage Library**: Keep track of your purchases and organize your personal library.
-
 ## Technologies Used
 
 * **Frontend**: React, TailwindCSS
@@ -49,6 +30,45 @@ Welcome to ReadRipple, the ultimate bookstore app where you can explore, purchas
 
 * **Payment Integration**: Stripe API
 
+## Installation
+
+### Prerequisites
+* Node.js
+* MongoDB
+
+### Steps
+1. **Clone the repository:**
+git clone https://github.com/yourusername/readrippleApp.git
+cd readrippleApp
+
+2. **Install dependencies:**
+cd backend
+npm install
+cd ../frontend
+npm install
+
+3. **Set up environment variables:**
+Create a `.env` file in the backend directory and add the following:
+
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+
+4. **Run the app:**
+
+cd backend
+npm start
+cd ../frontend
+npm start
+
+## Usage
+
+1. **Register:** Create a new account.
+2. **Login:** Log in with your credentials.
+3. **Browse Books:** Explore the catalog and search for books.
+4. **Choose a Book:** Choose a book you want to read
+5. **About downloading:** You don't allowed to download any book.
+
 ## Contributing
 We welcome contributions to ReadRipple! To contribute, follow these steps:
 
@@ -59,6 +79,11 @@ We welcome contributions to ReadRipple! To contribute, follow these steps:
 5. Open a Pull Request.
 
 Please ensure your code follows our Code of Conduct and Contributing Guidelines.
+
+## Related projects
+
+* **Free-Ebooks.net**
+* **Manybooks**
 
 ## License
 

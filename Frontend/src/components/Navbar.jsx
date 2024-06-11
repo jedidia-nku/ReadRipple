@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { useState } from "react";
 import Login from "./Login";
@@ -6,12 +7,21 @@ import { useAuth } from "../context/AuthProvider";
 import AddBookModal from "./AddBookModal";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  
+function Navbar( {onSearch}) {
+ /* 
+const filteredCourses = dataFromCourse.filter(e =>
+  e.name.toLowerCase() === ''
+  ? e
+  :
+  e.name.includes(onSearch.toLowerCase())
+);
+*/
+
+
   const [theme, setTheme] = useState();
   const [showModal, setShowModal] = useState(false);
   const [authUser] = useAuth();
-  
+
   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   const element = document.documentElement;
   useEffect(() => {
@@ -43,16 +53,16 @@ function Navbar() {
   const navItems = (
     <>
       <li>
-        {!authUser && <a href="/">Home</a>}
+        {!authUser && <a href="/" className="text-xl">Home</a>}
       </li>
       <li>
-      {authUser && <a href="/course">Books</a>}
+      {authUser && <a href="/course" className="text-xl">Books</a>}
       </li>
       <li>
-        <a href="/Contact">Contact</a>
+        <a href="/Contact" className="text-xl">Contact</a>
       </li>
       <li>
-        <a href="/About">About</a>
+        <a href="/About" className="text-xl">About</a>
       </li>
     </>
   );
@@ -109,11 +119,14 @@ function Navbar() {
           <div className="navbar-center space-x-3">
             
             <div className="hidden md:block">
-              <label className=" px-3 py-2 border rounded-md flex items-center gap-2">
+              <label className=" px-3 py-2 border rounded-md flex items-center gap-2" >
                 <input
                   type="text"
                   className="grow outline-none rounded-md px-1 dark:bg-slate-900 dark:text-white"
                   placeholder="Search"
+                  onChange={e=>onSearch(e.target.value)}
+                  /*onChange={handleInputChange} 
+                  {filteredCourses}*/
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
