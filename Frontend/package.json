@@ -12,6 +12,7 @@
     "dependencies": {
         "@react-pdf-viewer/core": "^3.12.0",
         "axios": "^1.7.2",
+        "deep-email-validator": "^0.1.21",
         "pdfjs-dist": "^3.4.120",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
