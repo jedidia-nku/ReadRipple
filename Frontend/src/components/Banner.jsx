@@ -1,5 +1,5 @@
 
-import banner from "../../public/banner.png";
+import banner from "../../public/Banner.png";
 import Login from "./Login";
 import { useAuth } from "../context/AuthProvider";
 function Banner() {
