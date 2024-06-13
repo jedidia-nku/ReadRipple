@@ -8,15 +8,6 @@ import AddBookModal from "./AddBookModal";
 import { Link } from "react-router-dom";
 
 function Navbar( {onSearch}) {
- /* 
-const filteredCourses = dataFromCourse.filter(e =>
-  e.name.toLowerCase() === ''
-  ? e
-  :
-  e.name.includes(onSearch.toLowerCase())
-);
-*/
-
 
   const [theme, setTheme] = useState();
   const [showModal, setShowModal] = useState(false);

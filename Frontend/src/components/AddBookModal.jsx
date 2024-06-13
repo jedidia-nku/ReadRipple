@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../constants';
 
 const AddBookModal = ({ onClose }) => {
     // const [showModal, setShowModal] = useState(false)
@@ -28,7 +29,7 @@ const AddBookModal = ({ onClose }) => {
     }
 
     try {
-      await axios.post('https://read-ripple.onrender.com/api/books', data, {
+      await axios.post(`${API_URL}/api/books`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

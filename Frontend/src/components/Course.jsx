@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
+import { API_URL } from "../constants";
 
 function Course({ searchValue }) {
   const [book, setBook] = useState([]);
@@ -11,7 +12,7 @@ function Course({ searchValue }) {
     const getBook = async () => {
       setBook([])
       try {
-        const res = await axios.get("https://read-ripple.onrender.com/book");
+        const res = await axios.get(`${API_URL}/book`);
         console.log(res.data);
         setBook(res.data);
       } catch (error) {

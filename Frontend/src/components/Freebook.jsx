@@ -7,12 +7,13 @@ import Slider from "react-slick";
 import axios from "axios";
 
 import Cards from "./Cards";
+import { API_URL } from "../constants";
 function Freebook() {
   const [book, setBook] = useState([]);
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("https://read-ripple.onrender.com/book?limit=3");
+        const res = await axios.get(`${API_URL}/book?limit=3`);
 
         const data = res.data; 
         setBook(data);
