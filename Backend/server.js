@@ -20,7 +20,7 @@ const URI = process.env.MongoDBURI;
 app.use(express.json());
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "content-type");
   next();
 })
@@ -79,6 +79,9 @@ app.use('/uploads', express.static(path.join(path.dirname('.'), 'uploads')));
 
 app.listen(PORT, async () => {
   try {
+    console.log("--------------------------------------");
+    console.log(URI);
+    console.log("--------------------------------------");
     await mongoose.connect(URI)
     console.log(`Server running on port ${PORT}`)
   } catch (error) {
