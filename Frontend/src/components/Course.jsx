@@ -11,7 +11,7 @@ function Course({ searchValue }) {
     const getBook = async () => {
       setBook([])
       try {
-        const res = await axios.get("http://localhost:4001/book");
+        const res = await axios.get("https://read-ripple.onrender.com/book");
         console.log(res.data);
         setBook(res.data);
       } catch (error) {

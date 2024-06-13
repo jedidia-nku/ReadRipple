@@ -12,11 +12,9 @@ function Freebook() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book?limit=3");
+        const res = await axios.get("https://read-ripple.onrender.com/book?limit=3");
 
-        const data = res.data; //res.data.filter((data) => data.category === "Free");
-        console.log(data);
-        console.log(".......");
+        const data = res.data; 
         setBook(data);
       } catch (error) {
         console.log(error);

@@ -125,8 +125,7 @@ const filteredCourses = dataFromCourse.filter(e =>
                   className="grow outline-none rounded-md px-1 dark:bg-slate-900 dark:text-white"
                   placeholder="Search"
                   onChange={e=>onSearch(e.target.value)}
-                  /*onChange={handleInputChange} 
-                  {filteredCourses}*/
+                  
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
